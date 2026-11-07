@@ -6,23 +6,28 @@
 //    and assign the new instance to `instance`.
 // 5. Export the class.
 
+let instance = null;
 class CartService {
-    constructor() {
-        // ... your implementation here ...
-        this.products = [];
+  constructor() {
+    // ... your implementation here ...
+    if (instance) {
+      return instance;
     }
+    instance = this;
+    this.products = [];
+  }
 
-    addProduct(product) {
-        this.products.push(product);
-    }
+  addProduct(product) {
+    this.products.push(product);
+  }
 
-    removeProduct(productId) {
-        this.products = this.products.filter(p => p.id !== productId);
-    }
+  removeProduct(productId) {
+    this.products = this.products.filter((p) => p.id !== productId);
+  }
 
-    getProducts() {
-        return this.products;
-    }
+  getProducts() {
+    return this.products;
+  }
 }
 
 export { CartService };

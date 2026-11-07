@@ -6,6 +6,12 @@ class Product {
     describe() {
         console.log(`${this.name} - $${this.price}`);
     }
+    getPrice(){
+        return this.price;
+    }
+    getDescription(){
+        return this.name;
+    }
 }
 
 class Book extends Product {
@@ -33,7 +39,15 @@ class Electronic extends Product {
 class ProductFactory {
     createProduct(type, details) {
         // TODO: Implement the Factory method.
+
         // Use a switch statement or if/else chain to check the `type`.
+        if (type === 'book'){
+            return new Book(details);
+        }else if(type ==='electronic'){
+            return new Electronic(details);
+        }else if (type === 'product'){
+            return new Product(details);
+        }
         // Based on the `type`, return a new instance of `Book`, `Electronic`, or a default `Product`.
         // Pass the `details` object to the constructor of the chosen class.
     }
